@@ -5,7 +5,7 @@ export default function Sidebar() {
         <div className="sidebar">
             <div className="sidebarItem">
                 <span className="sidebarTitle">ABOUT ME</span>
-                <img src="https://themegoods-cdn-pzbycso8wng.stackpathdns.com/grandblog/demo/wp-content/uploads/2015/11/aboutme.jpg" alt="" />
+                <img className="sidebarImg" src="https://png.pngtree.com/thumb_back/fh260/background/20201110/pngtree-beautiful-natural-beauty-of-railroad-tracks-in-autumn-image_445241.jpg" alt="" />
                 <p>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Sapiente cupiditate distinctio rem, expedita sunt eius quidem possimus,

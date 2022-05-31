@@ -59,4 +59,13 @@
 
 .siderbarIcon {
     font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.sidebarImg {
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+    object-fit: cover;
 }
