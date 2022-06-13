@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router"
-import "./singlePost.css"
+import { useLocation } from "react-router";
+import "./singlePost.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
@@ -19,8 +19,10 @@ export default function SinglePost() {
     const getPost = async () => {
       const res = await axios.get("/posts/" + path);
       setPost(res.data);
+      setTitle(res.data.title);
+      setDesc(res.data.desc);
     };
-    getPost()
+    getPost();
   }, [path]);
 
   const handleDelete = async () => {
@@ -29,7 +31,18 @@ export default function SinglePost() {
         data: { username: user.username },
       });
       window.location.replace("/");
-    } catch (err) { }
+    } catch (err) {}
+  };
+
+  const handleUpdate = async () => {
+    try {
+      await axios.put(`/posts/${post._id}`, {
+        username: user.username, 
+        title, 
+        desc,
+      });
+      setUpdateMode(false)
+    } catch (err) {}
   };
   return (
     <div className="singlePost">
@@ -38,11 +51,12 @@ export default function SinglePost() {
           <img src={PF + post.photo}
             alt=""
             className="singlePostImg" />
-        )}{
-          updateMode ? <input type="text" value={post.title} className="singlePostTitleInput" autoFocus/> : (
-
+        )}
+        {updateMode ? (<input type="text" value={title} className="singlePostTitleInput" autoFocus
+            onChange={(e) => setTitle(e.target.value)}/>
+            ) : (
             <h1 className="singlePostTitle">
-              {post.title}
+              {title}
               {post.username === user?.username && (
                 <div className="singlePostEdit">
                   <i className="singlePostIcon fa-solid fa-user-pen" onClick={() => setUpdateMode(true)}></i>
@@ -61,13 +75,16 @@ export default function SinglePost() {
           <span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
         </div>
         {updateMode ? (
-          <textarea className="singlePostDescInput" value={post.desc}/>
+          <textarea className="singlePostDescInput" value={desc} onChange={(e) => setDesc(e.target.value)} />
         ) : (
           <p className="singlePostDesc">
-            {post.desc}
+            {desc}
           </p>
+        )}
+        {updateMode && (
+          <button className="singlePostButton" onClick={handleUpdate}>Update</button>
         )}
       </div>
     </div>
-  )
+  );
 }
