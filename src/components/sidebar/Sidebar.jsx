@@ -19,9 +19,9 @@ export default function Sidebar() {
                 <span className="sidebarTitle">ABOUT ME</span>
                 <img className="sidebarImg" src="https://png.pngtree.com/thumb_back/fh260/background/20201110/pngtree-beautiful-natural-beauty-of-railroad-tracks-in-autumn-image_445241.jpg" alt="" />
                 <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Sapiente cupiditate distinctio rem, expedita sunt eius quidem possimus,
-                    consequatur quia dolorem suscipit magni at!
+                Front-end developer with knowledge of Figma enjoying the best end-user interface and 
+                interactivity. With knowledge of Javascript, CSS, React and react native. I am a
+                professional with solid knowledge in SAP PP/MM and excel.
                 </p>
             </div>
             <div className="sidebarItem">
